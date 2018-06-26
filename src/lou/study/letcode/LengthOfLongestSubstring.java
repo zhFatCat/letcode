@@ -18,40 +18,21 @@ import java.util.Set;
 public class LengthOfLongestSubstring {
     public static class Solution {
         public int lengthOfLongestSubstring(String s) {
-            if (s == null || s.length() == 0) {
-                return 0;
+            int n = s.length(), ans = 0;
+            Map<Character, Integer> map = new HashMap<>(); // current index of character
+            // try to extend the range [i, j]
+            for (int j = 0, i = 0; j < n; j++) {
+                if (map.containsKey(s.charAt(j))) {
+                    i = Math.max(map.get(s.charAt(j)), i);
+                }
+                ans = Math.max(ans, j - i + 1);
+                map.put(s.charAt(j), j + 1);
             }
-            int max = 0;
-            Set<Character> characters = new HashSet<>(s.length());
-            int length = s.length();
-            for (int i = 0; i < length; i++) {
-                int tmp = 0;
-                characters.clear();
-                for (int j = i; j < length; j++) {
-                    char ch = s.charAt(j);
-                    if (characters.add(ch)) {
-                        ++tmp;
-                    } else {
-                        i = j;
-                        if (max < tmp) {
-                            max = tmp;
-                        }
-                        break;
-                    }
-                }
-                if (max < tmp) {
-                    max = tmp;
-                }
-                if (max > (s.length() - i + 1)) {
-                    return max;
-                }
-            }
-            return max;
-
+            return ans;
         }
     }
 
     public static void main(String[] args) {
-        System.out.print(new Solution().lengthOfLongestSubstring("dvdf"));
+        System.out.print(new Solution().lengthOfLongestSubstring("aaaa"));
     }
 }
