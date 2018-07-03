@@ -15,13 +15,12 @@ public class ThreeSum {
                     final int sec = nums[j];
                     final int third = nums[k];
                     if (fst + sec + third == 0) {
-                        result.add(new MyList<Integer>() {
-                            {
-                                add(fst);
-                                add(sec);
-                                add(third);
-                            }
-                        });
+                        List<Integer> tmp = new MyList<Integer>();
+                        tmp.add(fst);
+                        tmp.add(sec);
+                        tmp.add(third);
+                        result.add(tmp);
+                        break;
                     }
                 }
             }
@@ -31,12 +30,11 @@ public class ThreeSum {
 
     public class MyList<K> extends ArrayList<K> {
         public boolean equals(Object o) {
-            return this.containsAll((Collection<?>) o) && ((Collection<?>) o).containsAll(this);
+            return this.containsAll((ArrayList<?>) o) && ((ArrayList<?>) o).containsAll(this);
         }
 
         public int hashCode() {
             return 3;
         }
     }
-
 }
