@@ -36,5 +36,10 @@ public class ThreeSum {
         public int hashCode() {
             return 3;
         }
+
+        public boolean contains(Object o) {
+
+            return o.equals(this.get(0)) || o.equals(this.get(1)) || o.equals(this.get(2));
+        }
     }
 }
