@@ -12,6 +12,6 @@ public class LongestPalindromeTest {
         LongestPalindrome lp = new LongestPalindrome();
         Assert.assertEquals("bab", lp.longestPalindrome("babad"));
         Assert.assertEquals("s", lp.longestPalindrome("s"));
-       // Assert.assertEquals("s", lp.longestPalindrome("babaddtattarrattatddetartrateedredividerb"));
+        Assert.assertEquals("ddtattarrattatdd", lp.longestPalindrome("babaddtattarrattatddetartrateedredividerb"));
     }
 }

@@ -1,11 +1,11 @@
 package lou.study.letcode.string;
 
 /*
-* one char isPalindrome
-*/
+ * one char isPalindrome
+ */
 public class LongestPalindrome {
     public String longestPalindrome(String s) {
-        if (s== null || s.length() < 2) {
+        if (s == null || s.length() < 2) {
             return s;
         }
         if (isPalindrome(s)) {
@@ -14,9 +14,19 @@ public class LongestPalindrome {
         if (s.length() == 2) {
             return s.substring(1);
         }
-        String l = longestPalindrome(s.substring(0, s.length() - 1));
-        String r = longestPalindrome(s.substring(1));
-        return l.length() >= r.length() ? l : r;
+        String result = s.substring(0, 1);
+        for (int i = 2; i < s.length(); i++) {
+            boolean have = false;
+            for (int j = 0; j <= s.length() - i; j++) {
+                String tmp = s.substring(j, j + i);
+                if (isPalindrome(tmp)) {
+                    result = tmp;
+                    have = true;
+                    break;
+                }
+            }
+        }
+        return result;
     }
 
     private boolean isPalindrome(String s) {
