@@ -25,6 +25,9 @@ public class LongestPalindrome {
                     break;
                 }
             }
+            if (!have && i >= result.length() + 2) {
+                return result;
+            }
         }
         return result;
     }
