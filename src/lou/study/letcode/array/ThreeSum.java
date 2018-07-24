@@ -30,7 +30,7 @@ public class ThreeSum {
 
     public class MyList<K> extends ArrayList<K> {
         public boolean equals(Object o) {
-            return this.containsAll((ArrayList<?>) o) && ((ArrayList<?>) o).containsAll(this);
+            return this.contains(((ArrayList<?>) o).get(0)) && this.contains(((ArrayList<?>) o).get(1)) && this.contains(((ArrayList<?>) o).get(2));
         }
 
         public int hashCode() {
